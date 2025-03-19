@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "SF Pro";
+  src: local("SF-Pro") url("./assets/SF-Pro.ttf");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: local("AtkinsonHyperlegible-Regular")
+    url("./assets/AtkinsonHyperlegible-Regular.ttf");
+}
+
+body {
+  --fade-on-stop: 1;
+  --fade-on-disconnect: 1;
+  --fade-delay: 2000;
+  --fade-disconnect-delay: 2000;
+  --hide-on-idle-connect: 1;
+
+  background-color: rgba(0, 0, 0, 1);
+  overflow: hidden;
+}
+
+#gradbg {
+  width: 95%;
+  height: 145px;
+  border-radius: 15px;
+  margin: 45px;
+  margin-left: 25px;
+  opacity: 0.3;
+  transition: opacity 1s;
+}
+
+#content {
+  position: absolute;
+  width: 87%;
+  height: 125px;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+  transform: translateY(-222px);
+  transition: opacity 1s;
+}
+
+#mainbox {
+  display: flex;
+  height: 95px;
+  align-items: center;
+  justify-content: left;
+}
+
+span {
+  text-overflow: ellipsis;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+#albumimg {
+  border-radius: 5px;
+}
+
+#title {
+  font-weight: bold;
+  font-family: "SF Pro";
+  font-stretch: expanded;
+  letter-spacing: 4px;
+  font-size: 25px;
+}
+
+#album {
+  font-style: italic;
+}
+
+#artist #album {
+  font-family: "Atkinson Hyperlegible";
+  font-size: 30px;
+}
+
+#progressBg {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  background-color: #55555555;
+}
+
+#progressBar {
+  border-radius: 5px;
+  height: 10px;
+  background-color: #ffffffff;
+  transition: linear width 0.25s;
+}
