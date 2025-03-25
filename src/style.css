@@ -10,9 +10,9 @@
 
 body {
   --fade-on-stop: 1;
-  --fade-on-disconnect: 1;
   --fade-delay: 2000;
-  --fade-disconnect-delay: 2000;
+  --fade-on-disconnect: 1;
+  --fade-disconnect-delay: 3000;
   --hide-on-idle-connect: 1;
 
   background-color: rgba(0, 0, 0, 1);
@@ -61,7 +61,7 @@ span {
   font-weight: bold;
   font-family: "SF Pro";
   font-stretch: expanded;
-  font-size: calc(1.5vw + 1.5vh);
+  font-size: 20px;
 }
 
 #album {
