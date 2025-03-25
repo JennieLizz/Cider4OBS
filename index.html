@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cider4OBS</title>
-    <script
-      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
-      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="/src/style.css" />
-  </head>
 
-  <body>
-    <canvas id="gradbg"></canvas>
-    <div id="content">
-      <div id="mainbox">
-        <img id="albumimg" src="" width="84px" height="84px" />
-        <div style="padding-left: 10px">
-          <span id="title">Skibidi Sigma song!</span><br />
-          <span id="artist">OwO</span><br />
-          <span id="album">UwU</span>
-        </div>
-      </div>
-      <div id="progressBg">
-        <div id="progressBar"></div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cider4OBS</title>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+    integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <canvas id="gradbg"></canvas>
+  <div id="content">
+    <div id="mainbox">
+      <img id="albumimg" src="c4obs.png" width="84px" height="84px" />
+      <div style="padding-left: 10px">
+        <span id="title"></span><br />
+        <span id="artist"></span><br />
+        <span id="album"></span>
       </div>
     </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <div id="progressBg">
+      <div id="progressBar"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

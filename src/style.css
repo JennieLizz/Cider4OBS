@@ -5,8 +5,7 @@
 
 @font-face {
   font-family: "Atkinson Hyperlegible";
-  src: local("AtkinsonHyperlegible-Regular")
-    url("./assets/AtkinsonHyperlegible-Regular.ttf");
+  src: local("AtkinsonHyperlegible-Regular") url("./assets/AtkinsonHyperlegible-Regular.ttf");
 }
 
 body {
@@ -62,8 +61,7 @@ span {
   font-weight: bold;
   font-family: "SF Pro";
   font-stretch: expanded;
-  letter-spacing: 4px;
-  font-size: 25px;
+  font-size: calc(1.5vw + 1.5vh);
 }
 
 #album {

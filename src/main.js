@@ -160,7 +160,7 @@ function handlePlaybackStateChange(data) {
     document.getElementById("gradbg").style.opacity = 0.3;
   }
 
-  updateComponents(data.attributes, false);
+  //updateComponents(data.attributes, false);
 }
 
 // Handle playback progress update
@@ -199,7 +199,7 @@ function handleDisconnect() {
 /* ============================== */
 
 // Update UI components with new track data
-async function updateComponents(data, updateBg) {
+async function updateComponents(data, updateCurrentSongColorOnly) {
   document.getElementById("title").innerText = data.name;
   document.getElementById("artist").innerText = data.artistName;
   document.getElementById("album").innerText = data.albumName;
@@ -209,10 +209,6 @@ async function updateComponents(data, updateBg) {
     .replace("{h}", data.artwork.height);
 
   document.getElementById("albumimg").src = artworkUrl;
-
-  if (!updateBg) {
-    return;
-  }
 
   Vibrant.from(artworkUrl).getPalette().then((palette) => {
     currentSongColor1 = palette.LightVibrant.hex;
