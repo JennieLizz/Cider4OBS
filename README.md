@@ -1,5 +1,5 @@
 <div align="center">
-<img src="c4obs.png" width="275px" style="border-radius: 5%;">
+<img src="src/assets/c4obs.png" width="275px" style="border-radius: 5%;">
 
 # Cider 4 OBS
 ### Connect your Cider Client to OBS and show what you're listening to!
@@ -10,6 +10,12 @@
 ![GitHub Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
+
+## The default player
+<div align="center">
+<img src="example.png" width="275px" style="border-radius: 5%;">
+</div>
+
 
 ## Requirements
 * [Open Broadcaster Software](https://obsproject.com/)
