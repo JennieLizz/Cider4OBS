@@ -1,5 +1,5 @@
 <div align="center">
-<img src="src/assets/c4obs.png" width="275px" style="border-radius: 25px;">
+<img src="src/assets/c4obs.png" width="275px" style="border-radius: 150px;">
 
 # Cider 4 OBS
 ### Connect your Cider Client to OBS and show what you're listening to!
