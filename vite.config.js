@@ -1,3 +1,3 @@
 export default {
-  base: '/cider4obs-better/'
+  base: '/Cider4OBS/'
 }
