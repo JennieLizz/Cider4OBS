@@ -11,10 +11,10 @@ let settings;
 /*       Gradient Control         */
 /* ============================== */
 
-let prevSongColor1 = '#000000';
-let prevSongColor2 = '#000000';
-let currentSongColor1 = '#000000';
-let currentSongColor2 = '#000000';
+let prevSongColor1 = "#000000";
+let prevSongColor2 = "#000000";
+let currentSongColor1 = "#000000";
+let currentSongColor2 = "#000000";
 
 let gradientBg;
 
@@ -30,11 +30,12 @@ function getVarFromBody(name) {
 // Retrieve settings from CSS variables
 function getSettings() {
   return {
-    fadeOnStop: getVarFromBody('--fade-on-stop') == 1,
-    fadeOnDisconnect: getVarFromBody('--fade-on-disconnect') == 1,
-    fadeDelay: parseInt(getVarFromBody('--fade-delay')) || 2000,
-    fadeDisconnectDelay: parseInt(getVarFromBody('--fade-disconnect-delay')) || parseInt(getVarFromBody('--fade-delay')) || 2000,
-    hideOnIdleConnect: getVarFromBody('--hide-on-idle-connect') == 1
+    maxGradOpacity: getVarFromBody("--max-grad-opacity") || 1,
+    fadeOnStop: getVarFromBody("--fade-on-stop") == 1,
+    fadeOnDisconnect: getVarFromBody("--fade-on-disconnect") == 1,
+    fadeDelay: parseInt(getVarFromBody("--fade-delay")) || 2000,
+    fadeDisconnectDelay: parseInt(getVarFromBody("--fade-disconnect-delay")) || parseInt(getVarFromBody("--fade-delay")) || 2000,
+    hideOnIdleConnect: getVarFromBody("--hide-on-idle-connect") == 1
   };
 }
 
@@ -46,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
   startWebSocket();
 
   gradientBg = new Granim({
-    element: '#gradbg',
-    direction: 'diagonal',
+    element: "#gradbg",
+    direction: "diagonal",
     states: {
       "default-state": {
         gradients: [
@@ -70,25 +71,27 @@ let retryDelay = 1000;
 function startWebSocket() {
   try {
     settings = getSettings();
-    console.debug('[DEBUG] [Init] Configuring websocket connection...');
+    console.debug("[DEBUG] [Init] Configuring websocket connection...");
 
-    const CiderApp = io("http://localhost:10767/", { transports: ['websocket'] });
+    const CiderApp = io("http://localhost:10767/", { transports: ["websocket"] });
 
     CiderApp.on("connect", () => {
-      console.debug('[DEBUG] [Init] Socket.io connection established!');
+      console.debug("[DEBUG] [Init] Socket.io connection established!");
       retryDelay = 1000; // Reset retry delay on successful connection
       clearUI();
 
       if (settings.hideOnIdleConnect) {
         document.getElementById("content").style.opacity = 0;
-        document.getElementById("gradbg").style.opacity = 0;
+        //document.getElementById("gradbg").style.opacity = 0;
+        document.body.style.setProperty("--current-grad-opacity", 0);
       }
 
       if (disconnectTimer) {
         clearTimeout(disconnectTimer);
         disconnectTimer = undefined;
         document.getElementById("content").style.opacity = 1;
-        document.getElementById("gradbg").style.opacity = 0.3;
+        //document.getElementById("gradbg").style.opacity = 0.3;
+        document.body.style.setProperty("--current-grad-opacity", settings.maxGradOpacity);
       }
     });
 
@@ -128,7 +131,7 @@ function startWebSocket() {
     });
 
   } catch (error) {
-    console.debug('[DEBUG] [Init] Code error:', error);
+    console.debug("[DEBUG] [Init] Code error:", error);
     console.debug("[DEBUG] [Init] Retrying in", retryDelay / 1000, "seconds...");
     setTimeout(startWebSocket, retryDelay);
     retryDelay = Math.min(retryDelay * 2, 30000); // Exponential backoff
@@ -151,13 +154,15 @@ function handlePlaybackStateChange(data) {
   if (data.state === "paused" && !pauseTimer && settings.fadeOnStop) {
     pauseTimer = setTimeout(() => {
       document.getElementById("content").style.opacity = 0;
-      document.getElementById("gradbg").style.opacity = 0;
+      //document.getElementById("gradbg").style.opacity = 0;
+      document.body.style.setProperty("--current-grad-opacity", 0);
     }, settings.fadeDelay);
   } else if (data.state === "playing" && (pauseTimer || settings.hideOnIdleConnect)) {
     clearTimeout(pauseTimer);
     pauseTimer = undefined;
     document.getElementById("content").style.opacity = 1;
-    document.getElementById("gradbg").style.opacity = 0.3;
+    //document.getElementById("gradbg").style.opacity = 0.3;
+    document.body.style.setProperty("--current-grad-opacity", settings.maxGradOpacity);
   }
 
   //updateComponents(data.attributes, false);
@@ -168,7 +173,8 @@ function updatePlaybackProgress(data) {
   if (document.getElementById("artist").innerText === "Please pause and unpause the track to update track info.") {
     clearUI();
     document.getElementById("content").style.opacity = 1;
-    document.getElementById("gradbg").style.opacity = 0.3;
+    //document.getElementById("gradbg").style.opacity = 0.3;
+    document.body.style.setProperty("--current-grad-opacity", settings.maxGradOpacity);
   }
 
   document.getElementById("progressBar").style.width = (
@@ -183,13 +189,14 @@ function handleDisconnect() {
   document.getElementById("album").innerText = "";
   document.getElementById("albumimg").src = DEFAULT_IMG;
 
-  console.debug('[DEBUG] [Init] Socket.io connection closed!');
+  console.debug("[DEBUG] [Init] Socket.io connection closed!");
   console.debug("[DEBUG] [Init] Retrying automatically...");
 
   if (!disconnectTimer && settings.fadeOnDisconnect) {
     disconnectTimer = setTimeout(() => {
       document.getElementById("content").style.opacity = 0;
-      document.getElementById("gradbg").style.opacity = 0;
+      //document.getElementById("gradbg").style.opacity = 0;
+      document.body.style.setProperty("--current-grad-opacity", 0);
     }, settings.fadeDisconnectDelay);
   }
 }
@@ -199,7 +206,7 @@ function handleDisconnect() {
 /* ============================== */
 
 // Update UI components with new track data
-async function updateComponents(data, updateCurrentSongColorOnly) {
+async function updateComponents(data) {
   document.getElementById("title").innerText = data.name;
   document.getElementById("artist").innerText = data.artistName;
   document.getElementById("album").innerText = data.albumName;
@@ -224,8 +231,8 @@ async function updateComponents(data, updateCurrentSongColorOnly) {
     gradientBg.destroy();
 
     gradientBg = new Granim({
-      element: '#gradbg',
-      direction: 'diagonal',
+      element: "#gradbg",
+      direction: "diagonal",
       states: {
         "default-state": {
           gradients: [

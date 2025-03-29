@@ -9,6 +9,9 @@
 }
 
 body {
+  --max-grad-opacity: 1;
+  --current-grad-opacity: 0;
+
   --fade-on-stop: 1;
   --fade-delay: 2000;
   --fade-on-disconnect: 1;
@@ -25,7 +28,7 @@ body {
   border-radius: 15px;
   margin: 45px;
   margin-left: 25px;
-  opacity: 0.85;
+  opacity: var(--current-grad-opacity);
   transition: opacity 1s;
 }
 
