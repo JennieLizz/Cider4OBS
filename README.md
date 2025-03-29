@@ -13,7 +13,7 @@
 
 ## The default player
 <div align="center">
-<img src="example.png" width="275px" style="border-radius: 5%;">
+<img src="example.png" width="900px" style="border-radius: 5%;">
 </div>
 
 
