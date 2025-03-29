@@ -52,6 +52,15 @@ span {
 }
 ```
 
+### Background
+Background settings.
+```css
+/* Background color is not supported because it samples the album colors! Opacity is from 0 - 1: */
+#gradbg {
+  opacity: 0.85;
+}
+```
+
 ### Settings
 Some settings adjusting the behavior of certain elements. (These are the defaults)
 ```css
