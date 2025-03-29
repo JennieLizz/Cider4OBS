@@ -30,7 +30,7 @@ function getVarFromBody(name) {
 // Retrieve settings from CSS variables
 function getSettings() {
   return {
-    maxGradOpacity: getVarFromBody("--max-grad-opacity") || 1,
+    maxGradOpacity: parseFloat(getVarFromBody("--max-grad-opacity")) || 1,
     fadeOnStop: getVarFromBody("--fade-on-stop") == 1,
     fadeOnDisconnect: getVarFromBody("--fade-on-disconnect") == 1,
     fadeDelay: parseInt(getVarFromBody("--fade-delay")) || 2000,
