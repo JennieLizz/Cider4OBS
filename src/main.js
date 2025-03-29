@@ -1,7 +1,7 @@
 import { Vibrant } from "node-vibrant/browser";
 import Granim from "granim";
 
-const DEFAULT_IMG = "c4obs.png";
+const DEFAULT_IMG = "./assets/empty-album.png";
 
 let pauseTimer;
 let disconnectTimer;
