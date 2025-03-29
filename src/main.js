@@ -1,7 +1,7 @@
 import { Vibrant } from "node-vibrant/browser";
 import Granim from "granim";
 
-const DEFAULT_IMG = "./assets/empty-album.png";
+import defaultAlbumImg from "./assets/empty-album.png";
 
 let pauseTimer;
 let disconnectTimer;
@@ -44,7 +44,7 @@ function getSettings() {
 /* ============================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function() {
+  setTimeout(function () {
     startWebSocket();
   }, 100);
 
@@ -122,7 +122,7 @@ function startWebSocket() {
     CiderApp.on("disconnect", () => handleDisconnect());
 
     CiderApp.on("connect_error", (error) => {
-      document.getElementById("albumimg").src = DEFAULT_IMG;
+      document.getElementById("albumimg").src = defaultAlbumImg;
       console.debug("[DEBUG] [Init] Connect Error:", error);
       console.debug("[DEBUG] [Init] Retrying in", retryDelay / 1000, "seconds...");
 
@@ -189,7 +189,7 @@ function handleDisconnect() {
   document.getElementById("title").innerText = "Disconnected. Retrying...";
   document.getElementById("artist").innerText = "";
   document.getElementById("album").innerText = "";
-  document.getElementById("albumimg").src = DEFAULT_IMG;
+  document.getElementById("albumimg").src = defaultAlbumImg;
 
   console.debug("[DEBUG] [Init] Socket.io connection closed!");
   console.debug("[DEBUG] [Init] Retrying automatically...");
