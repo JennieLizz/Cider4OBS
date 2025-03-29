@@ -52,20 +52,14 @@ span {
 }
 ```
 
-### Background
-Background settings.
-```css
-/* Background color is not supported because it samples the album colors! Opacity is from 0 - 1: */
-#gradbg {
-  opacity: 0.85;
-}
-```
-
 ### Settings
 Some settings adjusting the behavior of certain elements. (These are the defaults)
 ```css
 body {
   /* general key unless stated otherwise: 1=on, 0=off */
+
+  /* the maximum opacity of the gradient background: 0 - 1 */
+  --max-grad-opacity: 1; /* Ex: 0.85 */
   
   /* fade the box in and out depending on whether music is playing or not */
   --fade-on-stop: 1;
