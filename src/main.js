@@ -44,7 +44,9 @@ function getSettings() {
 /* ============================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-  startWebSocket();
+  setTimeout(function() {
+    startWebSocket();
+  }, 100);
 
   gradientBg = new Granim({
     element: "#gradbg",
