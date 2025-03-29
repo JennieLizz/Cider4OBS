@@ -195,7 +195,7 @@ function handleDisconnect() {
 }
 
 /* ============================== */
-/*         UI UPDATES             */
+/*            UI UPDATES          */
 /* ============================== */
 
 // Update UI components with new track data
