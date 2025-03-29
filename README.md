@@ -24,7 +24,7 @@
 
 ## Setup
 1. Setup Cider if you haven't done so already and open the settings. Go to "Connectivity" and scroll down all the way. Enable the Switch "WebSockets API".
-2. Create a new Browser Source in OBS and set the URL to [`https://jennielizz.github.io/cider4obs-better/`](https://jennielizz.github.io/cider4obs-better/).
+2. Create a new Browser Source in OBS and set the URL to [`https://jennielizz.github.io/Cider4OBS/`](https://jennielizz.github.io/Cider4OBS/).
 3. Set the source size to a width of `745` and a height of `250`. Resize with the transform controls. (Warning: You can only change the width! So make it as long as you want but the height must remain at `250`.)
 4. The browser in OBS will now attempt to connect to Cider every five seconds and reestablish the connection if necessary!
 5. If you want to customize how the app is looking, read below. Add the options into the Custom CSS box of OBS!
