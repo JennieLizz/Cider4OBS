@@ -1,11 +1,11 @@
 @font-face {
   font-family: "SF Pro";
-  src: local("SF-Pro") url("./assets/SF-Pro.ttf");
+  src: local("SF Pro") url("./assets/SF-Pro.ttf");
 }
 
 @font-face {
   font-family: "Atkinson Hyperlegible";
-  src: local("AtkinsonHyperlegible-Regular") url("./assets/AtkinsonHyperlegible-Regular.ttf");
+  src: local("Atkinson Hyperlegible Regular") url("./assets/AtkinsonHyperlegible-Regular.ttf");
 }
 
 body {
