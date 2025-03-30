@@ -44,6 +44,10 @@ function getSettings() {
 /* ============================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("content").style.opacity = 0;
+  //document.getElementById("gradbg").style.opacity = 0;
+  document.body.style.setProperty("--current-grad-opacity", 0);
+
   setTimeout(function () {
     startWebSocket();
   }, 100);
@@ -141,7 +145,7 @@ function startWebSocket() {
 }
 
 /* ============================== */
-/*          EVENT HANDLERS        */
+/*         EVENT HANDLERS         */
 /* ============================== */
 
 // Clear UI elements on connection
